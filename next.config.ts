@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "m.media-amazon.com",
         port: "", // default port for https is 443
       },
+      {
+        protocol: "https",
+        hostname: "ik.imagekit.io",
+        port: "",
+      },
     ],
   },
 };

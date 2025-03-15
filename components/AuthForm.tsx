@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ZodType } from "zod";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   DefaultValues,
@@ -47,7 +48,9 @@ const AuthForm = <T extends FieldValues>({
     defaultValues: defaultValues as DefaultValues<T>,
   });
 
-  const handleSubmit: SubmitHandler<T> = async (data) => {};
+  const handleSubmit: SubmitHandler<T> = async (data) => {
+    onSubmit(data);
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -76,7 +79,7 @@ const AuthForm = <T extends FieldValues>({
                   </FormLabel>
                   <FormControl>
                     {field.name === "universityCard" ? (
-                      <ImageUpload />
+                      <ImageUpload onFileChange={field.onChange} />
                     ) : (
                       <Input
                         required
